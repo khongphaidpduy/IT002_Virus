@@ -24,7 +24,7 @@ int main() {
 	cout << "Tiem vaccin!";
 	vector <Vatchu*> vatchu2;
 	for (int i = 0; i < m; i++) {
-		vatchu2.push_back(new Vatchu("BN" + to_string(i), 1));
+		vatchu2.push_back(new Vatchu("BenhNhan" + to_string(i), 1));
 	}
 	int soluongtrieuchungnang = 0, soluongvatchutuvong = 0;
 	for (int i = 0; i < m; i++) {
