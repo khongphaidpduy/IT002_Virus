@@ -11,7 +11,7 @@ int main() {
 	cin >> n;
 	vector <Vatchu*> vatchu;
 	for (int i = 0; i < n; i++) {
-		vatchu.push_back(new Vatchu("BN" + to_string(i), 0));
+		vatchu.push_back(new Vatchu("BenhNhan" + to_string(i), 0));
 	}
 
 	for (int i = 0; i < n; i++) {
