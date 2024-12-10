@@ -1,12 +1,12 @@
 #include "ebola.h"
 
 Ebola::Ebola(string ImmuneAbility, bool Vacxin) : Virus(ImmuneAbility,Vacxin) {
-	this->AvgProb = 0.05;
+	this->AvgProb = 0.5;
 	if (this->Symptom == "Trieu chung nang") {
-		this->SymptomInfo = "Sot cao, ho khan, kho tho va dau dau du doi";
+		this->SymptomInfo = "Non mua, tieu chay va xuat huyet ca ngoai lan ben trong";
 	}
 	else if (this->Symptom == "Trieu chung nhe") {
-		this->SymptomInfo = "Sot, ho, mat vi giac";
+		this->SymptomInfo = "Sot, dau hong, dau co va dau dau";
 	}
 	else {
 		this->SymptomInfo = "Khong trieu chung";
