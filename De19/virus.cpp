@@ -1,54 +1,54 @@
 #include "virus.h"
 #include "util.h"
-Virus::Virus(string ImmuneAbility, bool Vacxin) {
-	this->ImmuneAbility = ImmuneAbility;
-	if (ImmuneAbility == "Cao") {
-		SetMienDich(1);
-	}
-	else if (ImmuneAbility == "Trung Binh") {
-		SetMienDich(2);
-	}
-	else {
-		SetMienDich(3);
-	}
-	this->Vacxin = Vacxin;
+#include <iostream>
+#include <string>
+using namespace std;
+
+Virus::Virus(string immuneAbility, bool vacxin) 
+    : ImmuneAbility(immuneAbility), Vacxin(vacxin) {
+    if (immuneAbility == "Cao") {
+        SetMienDich(1);
+    } else if (immuneAbility == "Trung Binh") {
+        SetMienDich(2);
+    } else {
+        SetMienDich(3);
+    }
 }
 
-void Virus::SetMienDich(int i) {
-	double r1 = RandomDouble();
-	double bang[3][4];
-	for (int k = 0; k < 3; k++) {
-		for (int j = 0; j < 4; j++) {
-			if (Vacxin)
-				bang[k][j] = bangxacxuat2[k][j];
-			else
-				bang[k][j] = bangxacxuat[k][j];
-		}
-	}
-	if (r1 <= bang[i - 1][0]) {
-		Symptom = "Khong trieu chung";
-		DeathProb  = bang[i - 1][3];
-	}
-	else if (r1 <= bang[i - 1][1]) {
-		Symptom = "Trieu chung nhe";
-		DeathProb  = bang[i - 1][3];
-	}
-	else {
-		Symptom = "Trieu chung nang";
-		DeathProb  = bang[i - 1][3];
-	}
-	// cout << "xacsuat" << xacxuattuvong << endl;
+void Virus::SetMienDich(int level) {
+    double r1 = RandomDouble();
+    double probabilityTable[3][4];
+
+    // Chọn bảng xác suất dựa trên trạng thái vacxin
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 4; j++) {
+            probabilityTable[i][j] = Vacxin ? bangxacxuat2[i][j] : bangxacxuat[i][j];
+        }
+    }
+
+    // Xác định triệu chứng và xác suất tử vong dựa trên bảng xác suất
+    if (r1 <= probabilityTable[level - 1][0]) {
+        Symptom = "Khong trieu chung";
+        DeathProb = probabilityTable[level - 1][3];
+    } else if (r1 <= probabilityTable[level - 1][1]) {
+        Symptom = "Trieu chung nhe";
+        DeathProb = probabilityTable[level - 1][3];
+    } else {
+        Symptom = "Trieu chung nang";
+        DeathProb = probabilityTable[level - 1][3];
+    }
 }
 
 string Virus::TrieuChung() {
-	return this->Symptom;
+    return Symptom;
 }
 
 void Virus::InThongTin() {
-	if (this->Symptom != "Khong trieu chung")
-		cout << this->SymptomInfo << endl;
+    if (Symptom != "Khong trieu chung") {
+        cout << SymptomInfo << endl;
+    }
 }
 
 double Virus::TinhXacSuatTuVong() {
-	return this->DeathProb  * this->AvgProb;
+    return DeathProb * AvgProb;
 }
