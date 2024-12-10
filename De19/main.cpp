@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main() {
+signed main() {
 	srand(time(NULL));
 	int n;
 	cin >> n;
@@ -40,5 +40,5 @@ int main() {
 	cout << "Co " << a << " vat chu co trieu chung nang\n";
 	cout << "Co " << b << " vat chu tu vong\n"; 
 
-	cout << endl;
+	cout << "\n";
 }
