@@ -27,16 +27,10 @@ signed main() {
 	int a = 0, b = 0;
 	for (int i = 0; i < n; i++) {
 		vector <string> Symptom = vatchu2[i]->TrieuChung();
-		for (int j = 0; j < Symptom.size(); j++) {
-			if (Symptom[j] == "Trieu chung nang") {
-				a++;
-				break;
-			}
-		}
-		if (vatchu2[i]->TuVong()) {
-			b++;
-		}
+		a += (Symptom[0] == "Trieu chung nang" || Symptom[1] == "Trieu chung nang" || Symptom[2] == "Trieu chung nang") ? 1 : 0;
+		b += (vatchu2[i]->TuVong()) ? 1 : 0;
 	}
+	cout << "Sau khi tiem Vacxin!\n";
 	cout << "Co " << a << " vat chu co trieu chung nang\n";
 	cout << "Co " << b << " vat chu tu vong\n"; 
 
