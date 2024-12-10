@@ -6,16 +6,7 @@ Vatchu::Vatchu(string ID, bool Vacxin) {
 	this->ID = ID;
 	this->Vacxin = Vacxin;
 	
-	int r1 = rand() % 3;
-	if (r1 == 0) {
-		this->ImmuneAbility = "Cao";
-	}
-	else if (r1 == 1) {
-		this->ImmuneAbility = "Trung Binh";
-	}
-	else {
-		this->ImmuneAbility = "Thap";
-	}
+	ImmuneAbility = GenerateImmuneAbility();
 	this->virus[0]= new Covid19(this->ImmuneAbility, this->Vacxin);
 	this->virus[1]= new HIV(this->ImmuneAbility, this->Vacxin);
 	this->virus[2]= new Ebola(this->ImmuneAbility, this->Vacxin);
