@@ -17,6 +17,12 @@ private:
 	string ImmuneAbility;
 	bool Death;
 	vector<string> Symptom;
+	string GenerateImmuneAbility() {
+        int r = rand() % 3;
+        if (r == 0) return "Cao";
+        if (r == 1) return "Trung Binh";
+        return "Thap";
+    }
 public:
 	Vatchu(string ID, bool Vacxin);
 	~Vatchu();
