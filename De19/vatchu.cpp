@@ -1,26 +1,11 @@
 #include "vatchu.h"
-
-double bangxacxuat[3][4] = {
-	{0.5, 0.35, 0.15, 0.5},
-	{0.1, 0.4, 0.5, 0.7},
-	{0.05, 0.15, 0.8, 1}
-};
-
-double bangxacxuat2[3][4] = {
-	{0.7, 0.25, 0.05, 0.4},
-	{0.2, 0.5, 0.3, 0.6},
-	{0.1, 0.4, 0.5, 0.8}
-};
-
-double RandomDouble() {
-	return (rand() % 101) / 100.0;
-}
+#include "virus.h"
+#include "util.h"
 
 Vatchu::Vatchu(string ID, bool Vacxin) {
 	this->DeathProb = 0;
 	this->ID = ID;
 	this->Vacxin = Vacxin;
-	
 	ImmuneAbility = GenerateImmuneAbility();
 	this->virus[0]= new Covid19(this->ImmuneAbility, this->Vacxin);
 	this->virus[1]= new HIV(this->ImmuneAbility, this->Vacxin);
