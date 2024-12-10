@@ -1,24 +1,5 @@
 #include "virus.h"
-#include <iostream>
-#include <string>
-using namespace std;
-
-double bangxacxuat[3][4] = {
-	{0.5, 0.35, 0.15, 0.5},
-	{0.1, 0.4, 0.5, 0.7},
-	{0.05, 0.15, 0.8, 1}
-};
-
-double bangxacxuat2[3][4] = {
-	{0.7, 0.25, 0.05, 0.4},
-	{0.2, 0.5, 0.3, 0.6},
-	{0.1, 0.4, 0.5, 0.8}
-};
-
-double RandomDouble() {
-	return (rand() % 101) / 100.0;
-}
-
+#include "util.h"
 Virus::Virus(string immuneAbility, bool vacxin) 
     : ImmuneAbility(immuneAbility), Vacxin(vacxin) {
     if (immuneAbility == "Cao") {
@@ -37,7 +18,7 @@ void Virus::SetMienDich(int level) {
     // Chọn bảng xác suất dựa trên trạng thái vacxin
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 4; j++) {
-            probabilityTable[i][j] = Vacxin ? bangxacxuat2[i][j] : bangxacxuat[i][j];
+            probabilityTable[i][j] = Vacxin ? bang2[i][j] : bang1[i][j];
         }
     }
 
